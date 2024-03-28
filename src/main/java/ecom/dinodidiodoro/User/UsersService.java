@@ -59,7 +59,11 @@ public class UsersService {
         User currentUser = (User) authentication.getPrincipal();
         return currentUser.getId();
     }
-
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+        return currentUser;
+    }
 
 
 }

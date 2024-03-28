@@ -35,7 +35,7 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.DETACH )
     @JsonManagedReference
-    private List<Merch> merch = new ArrayList<>();
+    private List<Merch> merchs = new ArrayList<>();
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JsonManagedReference
     private List<Payment> payments = new ArrayList<>();
