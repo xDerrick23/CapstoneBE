@@ -1,5 +1,6 @@
 package ecom.dinodidiodoro.Payment;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ecom.dinodidiodoro.Merch.Merch;
 import ecom.dinodidiodoro.User.User;
 import jakarta.persistence.*;
@@ -20,7 +21,8 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "payment")
+    @OneToMany(mappedBy = "payment", cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Merch> merchs;
     private Double total;
 
