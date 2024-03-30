@@ -1,5 +1,6 @@
 package ecom.dinodidiodoro.Shoes;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ecom.dinodidiodoro.Merch.Merch;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Shoes {
     private String immagine;
     private Double prezzo;
     private String descrizione;
-    @OneToMany(mappedBy = "shoe")
+    @OneToMany(mappedBy = "shoe",cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Merch> merchs = new ArrayList<>();
 }
